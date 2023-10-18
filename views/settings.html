@@ -1,0 +1,86 @@
+<!-- settings.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Settings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+
+        .setting-option {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f5f5f5;
+        }
+        .vin{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Settings</h1>
+    <div class="container">
+        <h2>Notification Settings</h2>
+        <div class="setting-option">
+            <span>Receive email notifications:</span>
+            <input type="checkbox" id="emailNotifications" checked>
+        </div>
+
+        <div class="setting-option">
+            <span>Receive SMS notifications:</span>
+            <input type="checkbox" id="smsNotifications">
+        </div>
+
+        <h2>Preferences</h2>
+        <div class="setting-option">
+            <span>Preferred currency:</span>
+            <select id="currency">
+                <option value="usd">USD</option>
+                <option value="eur">EUR</option>
+                <option value="gbp">GBP</option>
+                <option value="inr">INR</option>
+            </select>
+        </div>
+
+        <div class="setting-option">
+            <span>Timezone:</span>
+            <select id="timezone">
+                <option value="utc">UTC</option>
+                <option value="est">EST</option>
+                <option value="pst">PST</option>
+                <option value="ist">IST</option>
+            </select>
+        </div>
+    </div>
+    <div class="vin">
+    <a href="term.html">
+        <button style="background-color: orange; text-align: center;">Back</button>
+    </a>
+    </div>
+</body>
+</html>

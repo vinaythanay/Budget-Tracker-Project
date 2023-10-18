@@ -1,0 +1,25 @@
+/* Add your CSS styles here */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+.card {
+    margin: 10px 0;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* Add more CSS styles based on your requirements */

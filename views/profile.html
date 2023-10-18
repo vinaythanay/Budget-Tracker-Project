@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Tracker Profile</title>
+   <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+}
+
+.profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.user-info {
+    font-size: 18px;
+}
+
+.summary {
+    margin: 20px;
+    font-size: 18px;
+}
+
+   </style>
+</head>
+<body>
+   <!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Finance Tracker</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form id="login-form">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <button type="submit">Login</button>
+    </form>
+    <div id="user-data">
+        <!-- User data will be displayed here -->
+    </div>
+</body>
+</html>
+
+<script>
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+    
+      const formData = new FormData(e.target);
+      const username = formData.get('username');
+      const password = formData.get('password');
+    
+      fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error('Invalid credentials');
+          }
+        })
+        .then((data) => {
+          const userData = document.getElementById('user-data');
+          userData.innerHTML = `
+            <h2>Welcome, ${data.username}!</h2>
+            <p><strong>Total Assets:</strong> $${data.totalAssets}</p>
+            <p><strong>Total Liabilities:</strong> $${data.totalLiabilities}</p>
+            <p><strong>Net Worth:</strong> $${data.netWorth}</p>
+          `;
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    });
+</script>    
+</body>
+</html>

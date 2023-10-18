@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Personal Finance Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    #charts-container {
+      display: flex;
+    }
+
+    canvas {
+      width: 400px;
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Personal Finance Tracker</h1>
+  <div id="charts-container">
+    <div>
+      <canvas id="dayChart" width="400" height="400"></canvas>
+      <button id="updateDay">Update Day</button>
+    </div>
+    <div>
+      <canvas id="monthChart" width="400" height="400"></canvas>
+      <button id="updateMonth">Update Month</button>
+    </div>
+    <div>
+      <canvas id="yearChart" width="400" height="400"></canvas>
+      <button id="updateYear">Update Year</button>
+    </div>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <th>Category</th>
+        <th>Amount</th>
+      </tr>
+      <tr>
+        <td>Food</td>
+        <td id="dayFoodAmount">30</td>
+        <td id="monthFoodAmount">300</td>
+        <td id="yearFoodAmount">3600</td>
+      </tr>
+      <tr>
+        <td>Entertainment</td>
+        <td id="dayEntertainmentAmount">20</td>
+        <td id="monthEntertainmentAmount">200</td>
+        <td id="yearEntertainmentAmount">2400</td>
+      </tr>
+      <tr>
+        <td>Transportation</td>
+        <td id="dayTransportationAmount">15</td>
+        <td id="monthTransportationAmount">150</td>
+        <td id="yearTransportationAmount">1800</td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const dayData = [
+        { category: "Food", amount: 30 },
+        { category: "Entertainment", amount: 20 },
+        { category: "Transportation", amount: 15 },
+      ];
+
+      const monthData = [
+        { category: "Food", amount: 300 },
+        { category: "Entertainment", amount: 200 },
+        { category: "Transportation", amount: 150 },
+      ];
+
+      const yearData = [
+        { category: "Food", amount: 3600 },
+        { category: "Entertainment", amount: 2400 },
+        { category: "Transportation", amount: 1800 },
+      ];
+
+      const dayChart = createChart("dayChart", dayData, "Day Report");
+      const monthChart = createChart("monthChart", monthData, "Month Report");
+      const yearChart = createChart("yearChart", yearData, "Year Report");
+
+      document.getElementById("updateDay").addEventListener("click", () => {
+        updateData(dayData, "day");
+        updateChart(dayChart, "Day Report", dayData);
+      });
+
+      document.getElementById("updateMonth").addEventListener("click", () => {
+        updateData(monthData, "month");
+        updateChart(monthChart, "Month Report", monthData);
+      });
+
+      document.getElementById("updateYear").addEventListener("click", () => {
+        updateData(yearData, "year");
+        updateChart(yearChart, "Year Report", yearData);
+      });
+
+      function updateData(data, timePeriod) {
+        data.forEach(item => {
+          const newAmount = parseInt(prompt(`Enter ${item.category} Expense for ${timePeriod}:`));
+          if (!isNaN(newAmount)) {
+            item.amount = newAmount;
+            document.getElementById(`${timePeriod}${item.category}Amount`).textContent = newAmount;
+          }
+        });
+      }
+
+      function createChart(containerId, data, title) {
+        const ctx = document.getElementById(containerId).getContext("2d");
+        return new Chart(ctx, {
+          type: "pie",
+          data: {
+            labels: data.map(item => item.category),
+            datasets: [{
+              data: data.map(item => item.amount),
+              backgroundColor: ["#ff5733", "#33c1ff", "#33ff40"],
+            }],
+          },
+          options: {
+            title: {
+              display: true,
+              text: title,
+            },
+          },
+        });
+      }
+
+      function updateChart(chart, title, data) {
+        chart.data.labels = data.map(item => item.category);
+        chart.data.datasets[0].data = data.map(item => item.amount);
+        chart.options.title.text = title;
+        chart.update();
+      }
+    });
+  </script>
+</body>
+</html>
