@@ -1,4 +1,5 @@
 
+
 const express = require("express");
 const app = express();
 const port = 8000;
@@ -131,22 +132,24 @@ app.post("/signupsubmit", (req, res) => {
     });
 });
 
-
-app.get('/get-expenses', (req, res) => {
-  res.json(expenses);
-});
 app.get("/term.html", (req, res) => {
   res.sendFile(__dirname + "/views/term.html");
 });
-app.get("/try.html", (req, res) => {
-  res.sendFile(__dirname + "/views/try.html");
-});
+
+
+
 
 app.get("/base.html", (req, res) => {
   res.sendFile(__dirname + "/views/base.html");
 });
 app.get("/limit.html", (req, res) => {
   res.sendFile(__dirname + "/views/limit.html");
+});
+app.get("/try.html", (req, res) => {
+  res.sendFile(__dirname + "/views/try.html");
+});
+app.get("/try.html", (req, res) => {
+  res.sendFile(__dirname + "/views/try.html");
 });
 app.get("/try.html", (req, res) => {
   res.sendFile(__dirname + "/views/try.html");
