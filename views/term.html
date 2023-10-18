@@ -52,74 +52,132 @@
    background-size: cover;
    opacity: 7px;
   }
+   .form-white {
+            position: relative;
+        }
+
+        .autocomplete-items {
+            position: absolute;
+            border: 1px solid #d4d4d4;
+            border-top: none;
+            z-index: 99;
+            top: 100%;
+            left: 0;
+            right: 0;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .autocomplete-item {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .autocomplete-item:hover {
+            background-color: #e9e9e9;
+        }
     </style>
- 
-  
 </head>
 <body>
-  <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <i class="fab fa-grav fa-2x mx-3 ps-1"></i>
-      </a>
-      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
-        data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="me-3">
-          <div class="form-white input-group" style="width: 250px;">
-            <input type="search" class="form-control rounded" placeholder="Search or jump to... ( / )"
-              aria-label="Search" aria-describedby="search-addon" />
-          </div>
-        </form>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-4">
-          <li class="nav-item mr-2">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item mr-2">
-            <a class="nav-link" href="countup.html" target="_self">Count Up</a>
-          </li>
-          
-          <li class="nav-item mr-2">
-            <a class="nav-link" href="limit.html">Margin</a>
-          </li>
-        
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             Report
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fab fa-grav fa-2x mx-3 ps-1"></i>
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/try.html">The DAY</a>
-              <a class="dropdown-item" href="/try.html">Month</a>
-              
-              <a class="dropdown-item" href="/try.html">Year</a>
-            </div>
-          </li>
-        </ul>
-        <div class="form-inline my-5 my-lg-1" style="position: absolute; left: 1300px;">
-            <ul class="navbar-nav mr-auto "  >  <li class="nav-item dropdown btn-group open">
-              <a class="btn btn-warning " href="#"><i class="fa fa-user fa-fw"></i>Operant </a>
-        <a class="btn btn-secondary dropdown-toggle "href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         
-        </a> 
-                
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                 
-                  <a class="dropdown-item" href="settings.html">Settings</a>
-                  <a class="dropdown-item" href="contact.html">Contact-Us</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" style="color: rgb(251, 20, 66);" href="/base.html">Log-Out <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="me-3">
+                    <div class="form-white input-group" style="width: 250px;">
+                        <input
+                            type="search"
+                            class="form-control rounded"
+                            placeholder="Search or jump to... ( / )"
+                            aria-label="Search"
+                            aria-describedby="search-addon"
+                            id="search-bar"
+                        />
+                        <div class="autocomplete-items" id="autocomplete-items"></div>
+                    </div>
+                </form>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-4">
+                    <li class="nav-item mr-2">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item mr-2">
+                        <a class="nav-link" href="countup.html" target="_self">Count Up</a>
+                    </li>
+
+                    <li class="nav-item mr-2">
+                        <a class="nav-link" href="limit.html">Margin</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Report
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/try.html">The DAY</a>
+                            <a class="dropdown-item" href="/try.html">Month</a>
+
+                            <a class="dropdown-item" href="/try.html">Year</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="form-inline my-5 my-lg-1" style="position: absolute; left: 1300px;">
+                    <ul class="navbar-nav mr-auto " >  <li class="nav-item dropdown btn-group open">
+                        <a class="btn btn-warning " href="#"><i class="fa fa-user fa-fw"></i>Operant </a>
+                        <a class="btn btn-secondary dropdown-toggle "href="#" id="navbarDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="settings.html">Settings</a>
+                            <a class="dropdown-item" href="contactus.html">Contact-Us</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" style="color: rgb(251, 20, 66);" href="/base.html">Log-Out <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                        </div>
+                    </li>
                 </div>
-              </li>
-      </div>
-    </div>
-  </nav>
+            </div>
+        </div>
+    </nav>
 
+    <script>
+        const searchInput = document.getElementById("search-bar");
+        const autocompleteItems = document.getElementById("autocomplete-items");
 
+        const pages = [
+            { name: "Margin", url: "limit.html" },
+            { name: "Settings", url: "settings.html" },
+            { name: "ContactUs", url: "contact.html" },
+             { name: "report", url: "report.html" },
+        ];
 
+        searchInput.addEventListener("click", function () {
+            autocompleteItems.innerHTML = "";
+            pages.forEach((page) => {
+                const autocompleteItem = document.createElement("div");
+                autocompleteItem.textContent = page.name;
+                autocompleteItem.className = "autocomplete-item";
 
+                autocompleteItem.addEventListener("click", function () {
+                    window.location.href = page.url;
+                });
+
+                autocompleteItems.appendChild(autocompleteItem);
+            });
+        });
+
+        document.addEventListener("click", function (e) {
+            if (e.target !== searchInput) {
+                autocompleteItems.innerHTML = "";
+            }
+        });
+    </script>
 </body>
 </html>
