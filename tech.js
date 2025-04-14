@@ -1,5 +1,4 @@
-
-
+const serviceAccount = JSON.parse(process.env.FIREBASE_CREDENTIALS);
 const express = require("express");
 const app = express();
 const port = 8000;
