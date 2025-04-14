@@ -170,6 +170,9 @@ app.get("/settings.html", (req, res) => {
 app.get("/contact.html", (req, res) => {
   res.sendFile(__dirname + "/views/contact.html");
 });
+app.get('/', (req, res) => {
+    res.send('Welcome to the application!');
+});
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
