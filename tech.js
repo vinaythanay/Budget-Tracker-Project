@@ -9,7 +9,6 @@ const { getFirestore } = require("firebase-admin/firestore");
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const serviceAccount = require("./key.json");
 
 initializeApp({
   credential: cert(serviceAccount),
