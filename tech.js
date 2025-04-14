@@ -1,4 +1,4 @@
-const serviceAccount = JSON.parse(process.env.FIREBASE_CREDENTIALS);
+
 const express = require("express");
 const app = express();
 const port = 8000;
@@ -8,7 +8,7 @@ const { getFirestore } = require("firebase-admin/firestore");
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
-
+const serviceAccount = require("./key.json");
 
 initializeApp({
   credential: cert(serviceAccount),
